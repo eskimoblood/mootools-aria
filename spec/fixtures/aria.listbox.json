@@ -1,0 +1,4 @@
+{
+	selector: 'list',
+	activeElement: '.activeElement'
+}

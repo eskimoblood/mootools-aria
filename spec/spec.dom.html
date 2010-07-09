@@ -2,13 +2,16 @@
 	<head>
 		<link type="text/css" rel="stylesheet" href="/Library/Ruby/Gems/1.8/gems/visionmedia-jspec-2.11.2/lib/jspec.css" />
 		<script src="/Library/Ruby/Gems/1.8/gems/visionmedia-jspec-2.11.2/lib/jspec.js"></script>
-		<script src="../lib/mootools-1.2.3-core-yc.js"></script>
-		<script src="../lib/jspec.mootools.js"></script>
-        
+		<script src="../assets/mootools.js"></script>
+		<script src="../assets/jspec.mootools.js"></script>
+        <script type="text/javascript" src="../src/core.js"></script>
+        <script type="text/javascript" src="../src/aria.js"></script>
+
 		<script>
 			function runSuites() {
 				JSpec
 				.exec('js/spec.core.js')
+				.exec('js/spec.aria.js')
 				.run()
 				.report()
 			}
