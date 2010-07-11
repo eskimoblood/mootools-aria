@@ -8,7 +8,7 @@ var Activity = new Class({
 		this.setOptions(options);
 		this.eventBus = eventBus;
 		this.element = $(this.element || this.elementSelector);
-		if (this.view) this.view = new View[this.view](this.element, this.view.options);
+		if (this.view) this.view = new this.view(this.element, this.view.options);
 		var events = this.eventListener;
 		for(var i in events) {
 			var eventTyp = events[i];

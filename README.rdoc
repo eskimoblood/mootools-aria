@@ -1,7 +1,5 @@
 
-= YourLib
-
-Description
+Implemtation of Martin Fowlers Passive View (http://martinfowler.com/eaaDev/PassiveScreen.html) in JavaScript using mootools
 
 == License 
 
