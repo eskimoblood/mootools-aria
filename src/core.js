@@ -14,35 +14,35 @@ Math.uuidFast = function() {
 };
 
 var Core = new Class({
-	Activitys: {},
+	activities: {},
 	initialize: function(){
 		this.eventBus = new EventBus().addEvent('destroy', this.stop.bind(this));
 	},
 	register: function(creator, options){
 		var uid = Math.uuidFast();
-		this.Activitys[uid] = {
+		this.activities[uid] = {
 			creator: creator,
 			options: options || {},
 			instance: null
 		};
 		return uid;
 	},
-	start: function(ActivityId) {
-		var Activity = this.Activitys[ActivityId];
-		Activity.instance =  Activity.instance || new Activity.creator(this.eventBus, $extend(Activity.options, {uuid: ActivityId}));
+	start: function(activityId) {
+		var activity = this.activities[activityId];
+		activity.instance =  activity.instance || new activity.creator(this.eventBus, $extend(activity.options, {uuid: activityId}));
 		return this;
 	},
-	stop: function (ActivityId) {
-		var Activity = this.Activitys[ActivityId],
-			instance = Activity.instance;
+	stop: function (activityId) {
+		var activity = this.activities[activityId],
+			instance = activity.instance;
 		if(instance){
 			instance.destroy();
-			Activity.instance = null;
+			activity.instance = null;
 		}
 		return this;
 	},
 	startAll: function() {
-		for(var uid in this.Activitys){
+		for(var uid in this.activities){
 			this.start(uid);
 		}
 	}
