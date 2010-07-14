@@ -48,7 +48,7 @@ describe 'Activity'
 			activity.toElement().should.be element
 		end
 
-		it 'should have an  DOM element as view when an element but no view is defined'
+		it 'should have an view object when a view is defined'
 			uid = core.register(activityClassExtentedWithView)
 			core.start(uid)
 			activity = core.activities[uid].instance

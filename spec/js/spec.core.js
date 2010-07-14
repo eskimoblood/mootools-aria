@@ -7,7 +7,7 @@ describe 'Core'
 	activity = core.activities[uid]
   end
 
-	describe '.register()'
+	describe 'register()'
 		it 'should add a new object to core.activities where instance is null'
 			activity.should.be_an_instance_of Object
 			activity.instance.should.be_null
