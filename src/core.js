@@ -37,7 +37,7 @@ var Core = new Class({
 			instance = activity.instance;
 		if(instance){
 			instance.destroy();
-			activity.instance = null;
+			delete activity.instance;
 		}
 		return this;
 	},

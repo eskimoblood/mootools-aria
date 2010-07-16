@@ -19,6 +19,16 @@ describe 'Core'
 			core.start(uid)
 			activity.instance.should.be_an_instance_of Activity
 		end
+
+		it 'all startet activities should have the same eventbus'
+			uid = core.register(activityClass)
+			core.start(uid)
+			activity1 = core.activities[uid].instance
+			uid = core.register(activityClass)
+			core.start(uid)
+			activity2 = core.activities[uid].instance
+			activity1.eventBus.should.be activity2.eventBus
+		end
 	end
 
 	describe 'stop()'

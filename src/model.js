@@ -70,7 +70,6 @@ var Model = new Class({
 			// put in our local object
 			this.cache[key] = value;
 		}
-		// return our newly cached item
 		this.eventBus.fireEvent('changed', key);
 		return value;
 	},
@@ -80,12 +79,12 @@ var Model = new Class({
 	 * {Boolean} local - put this in local storage
 	 * {Boolean} o - is this an object you want to put in local storage?
 	 */
-	clear: function(k, local, o) {
-		if (local && this.haslocalstorage) {
-			localstorage.removeitem(k);
+	clear: function(key, local) {
+		if (local && this.hasLocalStorage) {
+			localStorage.removeItem(key);
 		}
 		// delete in both caches - doesn't hurt.
-		delete this.cache[k];
+		delete this.cache[key];
 		this.eventBus.fireEvent('changed', key);
 	}
-})
+});

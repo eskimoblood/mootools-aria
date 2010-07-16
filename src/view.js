@@ -1,6 +1,16 @@
-
+/**
+ * @class View lalla
+ * @requires Events,
+ * @requires Options
+ */
 var View  = new Class({
 	Implements: [Events, Options],
+	/**
+	 * @constructor
+	 * @param element DOM Element
+	 * @param options options
+	 * @throws throws an exception if the element isn't an DOM element or the window
+	 */
 	initialize: function(element, options) {
 		var type = $type(element);
 		if(type != 'element' && type != 'window') throw 'Type of element should be element or window but is ' + type;
@@ -20,6 +30,13 @@ var View  = new Class({
 	get: function(attribute) {
 		return this.chooseGetterSetter('get', attribute);
 	},
+	/**
+	 *
+	 * @param typ
+	 * @param attribute
+	 * @param value
+	 * @private
+	 */
 	chooseGetterSetter: function(typ, attribute, value){
 		var name = typ + attribute.capitalize();
 		return this[name] ? this[name](value) : this.element[typ](attribute, value)
