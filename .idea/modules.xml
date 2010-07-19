@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/scaleableApp.iml" filepath="$PROJECT_DIR$/.idea/scaleableApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/scaleableApp.iml" filepath="$PROJECT_DIR$/scaleableApp.iml" />
     </modules>
   </component>
 </project>

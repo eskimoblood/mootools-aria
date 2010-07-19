@@ -1,0 +1,24 @@
+{
+	"addresses": [
+		{
+			"firstname": "Elizabeth",
+			"name": "Price",
+			"place": "Oxford"
+		},
+		{
+			"firstname": "Amelia",
+			"name": "Fletcher",
+			"place": "Oxford"
+		},
+		{
+			"firstname": "Pursey",
+			"name": "Rob",
+			"place": "Oxford"
+		},
+		{
+			"firstname": "Momtchiloff",
+			"name": "Peter",
+			"place": "Oxford"
+		}
+	]
+}

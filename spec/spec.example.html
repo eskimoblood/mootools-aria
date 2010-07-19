@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/Library/Ruby/Gems/1.8/gems/visionmedia-jspec-2.11.2/lib/jspec.css" />
+		<script src="/Library/Ruby/Gems/1.8/gems/visionmedia-jspec-2.11.2/lib/jspec.js"></script>
+		<script src="../assets/mootools.js"></script>
+		<script src="../assets/jspec.mootools.js"></script>
+        <script type="text/javascript" src="../src/core.js"></script>
+        <script type="text/javascript" src="../src/eventbus.js"></script>
+        <script type="text/javascript" src="../src/activity.js"></script>
+        <script type="text/javascript" src="../src/view.js"></script>
+        <script type="text/javascript" src="../src/model.js"></script>
+        <script type="text/javascript" src="../src/aria.js"></script>
+        <script type="text/javascript" src="../examples/addressBook/addressBook.js"></script>
+
+		<script>
+			function runSuites() {
+				JSpec
+				.exec('js/examples/spec.js')
+				.run()
+				.report()
+			}
+		</script>
+	</head>
+	<body class="jspec" onLoad="runSuites();">
+		<div id="jspec-top"><h2 id="jspec-title">JSpec <em><script>document.write(JSpec.version)</script></em></h2></div>
+		<div id="jspec"></div>
+		<div id="jspec-bottom"></div>
+	</body>
+</html>

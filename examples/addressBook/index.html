@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>address book example</title>
+    <script type="text/javascript" src="../../assets/mootools.js"></script>
+    <script type="text/javascript" src="../../src/core.js"></script>
+    <script type="text/javascript" src="../../src/model.js"></script>
+    <script type="text/javascript" src="../../src/activity.js"></script>
+    <script type="text/javascript" src="../../src/eventbus.js"></script>
+    <script type="text/javascript" src="../../src/view"></script>
+    <script type="text/javascript" src="addressBook.js"></script>
+    <script type="text/javascript">
+        window.addEvent('load', function(){
+            var addressJson = {
+                "addresses": [
+                    {
+                        "firstname": "Elizabeth",
+                        "name": "Price",
+                        "place": "Oxford"
+                    },
+                    {
+                        "firstname": "Amelia",
+                        "name": "Fletcher",
+                        "place": "Oxford"
+                    },
+                    {
+                        "firstname": "Pursey",
+                        "name": "Rob",
+                        "place": "Oxford"
+                    },
+                    {
+                        "firstname": "Momtchiloff",
+                        "name": "Peter",
+                        "place": "Oxford"
+                    }
+                ]
+            };
+            var core = new Core();
+            core.start(core.register(AddressListLengthActivity, {element: $('addressListLength')}))
+            core.start(core.register(AddressListActivity, {element: $('addressList'), addressJson:addressJson}))
+            core.start(core.register(AddressListEditor, {element: $('addressListEditor')}))
+            core.start(core.register(AddressListAdd, {element: $('addressListAdd')}))
+
+
+        })
+    </script>
+
+</head>
+<body>
+    <div id="addressList"></div>
+    <form id="addressListEditor"></form>
+    <div id="addressListLength"></div>
+    <div id="addressListAdd">add address</div>
+</body>
+</html>
