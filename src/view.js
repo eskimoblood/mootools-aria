@@ -30,13 +30,6 @@ var View  = new Class({
 	get: function(attribute) {
 		return this.chooseGetterSetter('get', attribute);
 	},
-	/**
-	 *
-	 * @param typ
-	 * @param attribute
-	 * @param value
-	 * @private
-	 */
 	chooseGetterSetter: function(typ, attribute, value){
 		var name = typ + attribute.capitalize();
 		return this[name] ? this[name](value) : this.element[typ](attribute, value)
