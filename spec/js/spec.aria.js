@@ -69,6 +69,8 @@ describe 'Radiogroup'
   end
 end
 
+
+
 describe 'Combobox'
   before
     box=sandbox().set('html', fixture('combobox')).getElement('div')
@@ -111,5 +113,89 @@ describe 'Combobox'
 		items[0].should.have_attr 'aria-checked', 'true'
 
 	end
+  end
+end
+
+describe 'Button'
+  before
+    div = new Element('div')
+	button = new Aria.Button()
+	button.setAria({
+		selectors: {
+			button: div
+		}
+	})
+
+  end
+
+  describe 'after initialisation'
+    it 'box should have role "button", tabindex 0 and aria-pressed false'
+    	div.should.have_attr 'role', 'button'
+		div.should.have_attr 'tabindex', '0'
+
+    end
+
+	it 'on keydown the element should have  aria-pressed set to true and back to false on keyup using the enter key all other keys should be ignored'
+    	div.fireEvent('keydown', {type: 'keydown', key:'enter'})
+		div.should.have_attr 'aria-pressed', 'true'
+    	div.fireEvent('keyup', {type: 'keyup', key:'enter'})
+		div.should.have_attr 'aria-pressed', 'false'
+
+		div.fireEvent('keydown', {type: 'keydown', key:'left'})
+		div.should.have_attr 'aria-pressed', 'false'
+    	div.fireEvent('keyup', {type: 'keyup', key:'left'})
+		div.should.have_attr 'aria-pressed', 'false'
+    end
+
+	it 'on mousedown the element should have  aria-pressed set to true and back to false on mouseup'
+    	div.fireEvent('mousedown', {type: 'mousedown'})
+		div.should.have_attr 'aria-pressed', 'true'
+    	div.fireEvent('mouseup', {type: 'mouseup'})
+		div.should.have_attr 'aria-pressed', 'false'
+    end
+
+	it 'on mousedown the element should have  aria-pressed set to true and back to false on mouseup when the mouse has leave the button'
+    	div.fireEvent('mousedown', {type: 'mousedown'})
+		div.should.have_attr 'aria-pressed', 'true'
+    	div.fireEvent('mouseleave', {type: 'mouseup'})
+		div.should.have_attr 'aria-pressed', 'true'
+		window.fireEvent('mouseup', {type: 'mouseup'})
+		div.should.have_attr 'aria-pressed', 'false'
+    end
+
+	it 'should fire event click when the clicked'
+		a = ''
+		button.addEvent('click', function(){a=1})
+    	div.fireEvent('click', {type: 'click'})
+		a.should.be 1
+
+    end
+
+  end
+end
+
+describe 'AlertDialog'
+  before
+    div = new Element('div', {html: 'some text, <span>ok</span>'})
+	button = new Aria.AlertDialog()
+	test=0
+	button.setAria({
+		selectors: {
+			alertdialog: div
+		},
+		dialogFunctions: [
+			{function: function(){test=1}, event: 'click', selector:'span'}
+		]
+	})
+
+  end
+
+  describe 'after initialisation'
+    it 'box should have role "button", tabindex 0 and aria-pressed false the first span '
+    	div.should.have_attr 'role', 'alertdialog'
+		div.should.have_attr 'tabindex', '0'
+    end
+
+	
   end
 end

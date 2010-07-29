@@ -129,7 +129,7 @@ Aria.Combobox = new Class({
 		activeElement: null
 	},
 	settings: {
-		roles: ['combobox', 'listbox', 'textbox','option'],
+		roles: ['combobox', 'listbox', 'textbox', 'option'],
 		ariaAttributes:{
 			combobox: {expanded: false}
 		}
@@ -161,4 +161,53 @@ Aria.Combobox = new Class({
 		this.open = false;
 	}
 });
+
+Aria.Button = new Class({
+	Extends: Aria,
+	settings: {
+		roles: ['button'],
+		ariaAttributes:{
+			button: {pressed: false}
+		}
+	},
+	buildAria: function() {
+		var pressedTrue = this.pressed.bindWithEvent(this, 1),
+			pressedFalse = this.windowMouseUp =this.pressed.bindWithEvent(this);
+		this['button'].addEvents({
+			keyup: pressedFalse,
+			mouseup: pressedFalse,
+			keydown: pressedTrue,
+			mousedown: pressedTrue,
+			mouseleave: this.leave.bind(this),
+			click: function(){this.fireEvent('click')}.bind(this)
+		});
+	},
+	pressed: function(event, down) {
+		var key = event.key,
+			eventType = event.type;
+		if (eventType.test(/mousedown|mouseup/) || (eventType.test(/keydown|keyup/) && key == 'enter')) {
+			down = !!down;
+			this.element.setProperty('aria-pressed', down);
+		}
+		if (event.target == window)  window.removeEvent('mouseup', this.windowMouseUp);
+
+	},
+	leave: function() {
+		if (this.element.get('aria-pressed'))  window.addEvent('mouseup', this.windowMouseUp)
+	}
+});
+
+Aria.AlertDialog = new Class({
+	Extends: Aria,
+	settings: {
+		roles: ['alertdialog']
+	},
+	buildAria: function(){
+		this.options.dialogFunctions.each(function(item){
+			this.element.getElement(item.selector).addEvent(item.event, item.funktion);
+		},this)
+	},
+	s
+});
+
 

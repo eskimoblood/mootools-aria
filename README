@@ -1,5 +1,7 @@
 
-Implementation of Martin Fowlers Passive View (http://martinfowler.com/eaaDev/PassiveScreen.html) in JavaScript using mootools.
+Implementation of WAI-ARIA behaviors in JavaScript using mootools.
+The gaol is to create classes that handle the basic ARIA related stuff like roles and attributes and user interaction with mouse or keyboard
+for event driven development.
 
 == License 
 
